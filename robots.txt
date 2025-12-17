@@ -4,4 +4,4 @@ Disallow: /api/
 Disallow: /tags/
 Disallow: /index.xml
 
-Sitemap: https://www.ahaan-thai.de/sitemap.xml
+Sitemap: https://en.der-reiskoch.de/sitemap.xml

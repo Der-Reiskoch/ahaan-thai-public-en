@@ -13,6 +13,10 @@ RewriteRule ^/index/(.*)$ https://de.ahaan-thai.de/lexikon/$1 [R=301,L]
 # Redirect old /en/index URLs to English subdomains' encyclopedia
 RewriteRule ^en/index/(.*)$ https://en.ahaan-thai.de/encyclopedia/$1 [R=301,L]
 
+# On English domain: redirect /index/* to /encyclopedia/*
+RewriteCond %{HTTP_HOST} ^en\.ahaan-thai\.de$
+RewriteRule ^index/(.*)$ /encyclopedia/$1 [R=301,L]
+
 # Redirect old /en/* URLs to English subdomain
 RewriteRule ^en/(.*)$ https://en.ahaan-thai.de/$1 [R=301,L]
 
