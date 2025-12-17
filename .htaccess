@@ -1,0 +1,59 @@
+RewriteEngine on
+
+# Allow multiple domains for multihost setup
+RewriteCond %{HTTP_HOST} !^www\.ahaan-thai\.de$
+RewriteCond %{HTTP_HOST} !^en\.ahaan-thai\.de$
+RewriteCond %{HTTP_HOST} !^de\.ahaan-thai\.de$
+RewriteCond %{REQUEST_URI} !^\/ads\.txt$
+RewriteRule ^(.*)$ https://www.ahaan-thai.de/$1 [R=301,L]
+
+# Redirect old /en/* URLs to English subdomain
+RewriteRule ^en/(.*)$ https://en.ahaan-thai.de/$1 [R=301,L]
+
+#https://www.der-reiskoch.de/thaipause/tagebuch/2021/10/25/?fbclid=IwAR2podBLMAIkhlREuBv6cbjDJ8hXazuK60LH05pIvYezjZGVLWg_8AH4TI4
+#remove facebook fbclid qeuery param
+RewriteCond %{QUERY_STRING} ^(.*?)(&?fbclid=[a-zA-Z0-9_-]+)$
+RewriteRule ^(.*)$ /$1?%1 [L,NE,R=301]
+
+###############################################################################################
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  ExpiresByType text/html "modification 4 hours"
+
+  # Images
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+
+  # Video
+  ExpiresByType video/webm "access plus 1 year"
+  ExpiresByType video/mp4 "access plus 1 year"
+  ExpiresByType video/mpeg "access plus 1 year"
+
+  # Fonts
+  ExpiresByType font/ttf "access plus 1 year"
+  ExpiresByType font/otf "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType application/font-woff2 "access plus 1 year"
+  ExpiresByType application/font-woff "access plus 1 year"
+
+  # CSS, JavaScript
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+
+  # Others
+  ExpiresByType application/pdf "access plus 1 year"
+  ExpiresByType image/vnd.microsoft.icon "access plus 1 year"
+
+  ExpiresDefault "access plus 1 year"
+</IfModule>
+
+# 404 pages handled by each domain separately in multihost setup
+ErrorDocument 404 /404.html

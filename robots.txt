@@ -1,0 +1,7 @@
+User-agent: *
+
+Disallow: /api/
+Disallow: /tags/
+Disallow: /index.xml
+
+Sitemap: https://www.ahaan-thai.de/sitemap.xml
