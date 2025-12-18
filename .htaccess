@@ -3,17 +3,14 @@ RewriteEngine on
 # Allow multiple domains for multihost setup
 RewriteCond %{HTTP_HOST} !^www\.ahaan-thai\.de$
 RewriteCond %{HTTP_HOST} !^en\.ahaan-thai\.de$
-RewriteCond %{HTTP_HOST} !^de\.ahaan-thai\.de$
 RewriteCond %{REQUEST_URI} !^\/ads\.txt$
 RewriteRule ^(.*)$ https://www.ahaan-thai.de/$1 [R=301,L]
 
-# On German domains: redirect /index and /index/ to /lexikon/
-RewriteCond %{HTTP_HOST} ^de\.ahaan-thai\.de$ [OR]
+# On German domain: redirect /index and /index/ to /lexikon/
 RewriteCond %{HTTP_HOST} ^www\.ahaan-thai\.de$
 RewriteRule ^index/?$ /lexikon/ [R=301,L]
 
-# On German domains: redirect /index/* to /lexikon/*
-RewriteCond %{HTTP_HOST} ^de\.ahaan-thai\.de$ [OR]
+# On German domain: redirect /index/* to /lexikon/*
 RewriteCond %{HTTP_HOST} ^www\.ahaan-thai\.de$
 RewriteRule ^index/(.+)$ /lexikon/$1 [R=301,L]
 
