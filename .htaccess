@@ -15,6 +15,7 @@ RewriteCond %{HTTP_HOST} ^www\.ahaan-thai\.de$
 RewriteRule ^index/(.+)$ /lexikon/$1 [R=301,L]
 
 # Redirect old /en/index URLs to English subdomains' encyclopedia
+RewriteCond %{HTTP_HOST} ^www\.ahaan-thai\.de$
 RewriteRule ^en/index/(.*)$ https://en.ahaan-thai.de/encyclopedia/$1 [R=301,L]
 
 # On English domain: redirect /index and /index/ to /encyclopedia/
