@@ -6,6 +6,17 @@ RewriteCond %{HTTP_HOST} !^en\.ahaan-thai\.de$
 RewriteCond %{REQUEST_URI} !^\/ads\.txt$
 RewriteRule ^(.*)$ https://www.ahaan-thai.de/$1 [R=301,L]
 
+# Normalize repeated slashes in request paths
+RewriteCond %{THE_REQUEST} \s/+(.*)//+\s [NC]
+RewriteRule ^ %1 [R=301,L]
+
+# Redirect English content paths on German host to English domain
+RewriteCond %{HTTP_HOST} ^www\.ahaan-thai\.de$
+RewriteRule ^encyclopedia/(.*)$ https://en.ahaan-thai.de/encyclopedia/$1 [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^www\.ahaan-thai\.de$
+RewriteRule ^cookbooks/(.*)$ https://en.ahaan-thai.de/cookbooks/$1 [R=301,L]
+
 # On German domain: redirect /index and /index/ to /lexikon/
 RewriteCond %{HTTP_HOST} ^www\.ahaan-thai\.de$
 RewriteRule ^index/?$ /lexikon/ [R=301,L]
@@ -14,9 +25,18 @@ RewriteRule ^index/?$ /lexikon/ [R=301,L]
 RewriteCond %{HTTP_HOST} ^www\.ahaan-thai\.de$
 RewriteRule ^index/(.+)$ /lexikon/$1 [R=301,L]
 
+
+# On German domain: redirect common region typos
+RewriteCond %{HTTP_HOST} ^www\.ahaan-thai\.de$
+RewriteRule ^regions/zentalthailand/?$ /regions/zentralthailand/ [R=301,L]
+
 # Redirect old /en/index URLs to English subdomains' encyclopedia
 RewriteCond %{HTTP_HOST} ^www\.ahaan-thai\.de$
 RewriteRule ^en/index/(.*)$ https://en.ahaan-thai.de/encyclopedia/$1 [R=301,L]
+
+# Redirect old Quellen URLs to cookbook index
+RewriteCond %{HTTP_HOST} ^www\.ahaan-thai\.de$
+RewriteRule ^quellen/thailand/.*$ /kochbucher/thailand-das-kochbuch/ [R=301,L]
 
 # On English domain: redirect /index and /index/ to /encyclopedia/
 RewriteCond %{HTTP_HOST} ^en\.ahaan-thai\.de$
@@ -25,6 +45,70 @@ RewriteRule ^index/?$ /encyclopedia/ [R=301,L]
 # On English domain: redirect /index/* to /encyclopedia/*
 RewriteCond %{HTTP_HOST} ^en\.ahaan-thai\.de$
 RewriteRule ^index/(.+)$ /encyclopedia/$1 [R=301,L]
+
+# On English domain: redirect /lexikon/* to /encyclopedia/*
+RewriteCond %{HTTP_HOST} ^en\.ahaan-thai\.de$
+RewriteRule ^lexikon/(.+)$ /encyclopedia/$1 [R=301,L]
+
+# On English domain: redirect /kochbucher/* to /cookbooks/*
+RewriteCond %{HTTP_HOST} ^en\.ahaan-thai\.de$
+RewriteRule ^kochbucher/(.*)$ /cookbooks/$1 [R=301,L]
+
+# On English domain: redirect /suchen/* to /search/*
+RewriteCond %{HTTP_HOST} ^en\.ahaan-thai\.de$
+RewriteRule ^suchen/zufall/?$ /search/ [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^en\.ahaan-thai\.de$
+RewriteRule ^suchen/?$ /search/ [R=301,L]
+
+# On English domain: fix region slug mismatches
+RewriteCond %{HTTP_HOST} ^en\.ahaan-thai\.de$
+RewriteRule ^regions/nordthailand/?$ /regions/northern-thailand/ [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^en\.ahaan-thai\.de$
+RewriteRule ^regions/nordostthailand/?$ /regions/northeastern-thailand/ [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^en\.ahaan-thai\.de$
+RewriteRule ^regions/suedthailand/?$ /regions/southern-thailand/ [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^en\.ahaan-thai\.de$
+RewriteRule ^regions/zentralthailand/?$ /regions/central-thailand/ [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^en\.ahaan-thai\.de$
+RewriteRule ^regions/north-thailand/?$ /regions/northern-thailand/ [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^en\.ahaan-thai\.de$
+RewriteRule ^regions/northeast-thailand/?$ /regions/northeastern-thailand/ [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^en\.ahaan-thai\.de$
+RewriteRule ^regions/south-thailand/?$ /regions/southern-thailand/ [R=301,L]
+
+# On English domain: redirect region pagination from old slugs
+RewriteCond %{HTTP_HOST} ^en\.ahaan-thai\.de$
+RewriteRule ^regions/northeast-thailand/page/[0-9]+/?$ /regions/northeastern-thailand/ [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^en\.ahaan-thai\.de$
+RewriteRule ^regions/north-thailand/page/[0-9]+/?$ /regions/northern-thailand/ [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^en\.ahaan-thai\.de$
+RewriteRule ^regions/south-thailand/page/[0-9]+/?$ /regions/southern-thailand/ [R=301,L]
+
+# On English domain: fix common typo routes
+RewriteCond %{HTTP_HOST} ^en\.ahaan-thai\.de$
+RewriteRule ^encyclopedia/y/yam-(.+)$ /encyclopedia/y/yum-$1 [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^en\.ahaan-thai\.de$
+RewriteRule ^tags/stiry-fry/?$ /tags/stir-fry/ [R=301,L]
+
+# Collapse duplicate letter segments
+RewriteRule ^lexikon/([a-z])/\1/(.+)$ /lexikon/$1/$2 [R=301,L]
+RewriteRule ^encyclopedia/([a-z])/\1/(.+)$ /encyclopedia/$1/$2 [R=301,L]
+
+# Redirect tag pagination to base tag page
+RewriteRule ^tags/(.+)/page/[0-9]+/?$ /tags/$1/ [R=301,L]
+
+# Redirect old search handler
+RewriteRule ^__cl__/?$ /worterbuch/erklaeren/ [R=301,L]
 
 # Redirect old /en/* URLs to English subdomain
 RewriteRule ^en/(.*)$ https://en.ahaan-thai.de/$1 [R=301,L]
