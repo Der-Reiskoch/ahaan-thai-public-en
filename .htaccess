@@ -26,6 +26,10 @@ RewriteCond %{HTTP_HOST} ^www\.ahaan-thai\.de$
 RewriteRule ^index/(.+)$ /lexikon/$1 [R=301,L]
 
 
+# On German domain: redirect /de/* to root (removes language prefix from Hugo-generated alias pages)
+RewriteCond %{HTTP_HOST} ^www\.ahaan-thai\.de$
+RewriteRule ^de/(.*)$ /$1 [R=301,L]
+
 # On German domain: redirect common region typos
 RewriteCond %{HTTP_HOST} ^www\.ahaan-thai\.de$
 RewriteRule ^regions/zentalthailand/?$ /regions/zentralthailand/ [R=301,L]
