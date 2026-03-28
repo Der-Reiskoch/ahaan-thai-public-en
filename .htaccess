@@ -104,6 +104,22 @@ RewriteRule ^encyclopedia/y/yam-(.+)$ /encyclopedia/y/yum-$1 [R=301,L]
 RewriteCond %{HTTP_HOST} ^en\.ahaan-thai\.de$
 RewriteRule ^tags/stiry-fry/?$ /tags/stir-fry/ [R=301,L]
 
+# On English domain: fix renamed/incorrect tag slugs (soft-404 redirects)
+RewriteCond %{HTTP_HOST} ^en\.ahaan-thai\.de$
+RewriteRule ^tags/ground-meat/?$ /tags/minced-meat/ [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^en\.ahaan-thai\.de$
+RewriteRule ^tags/palm-heart/?$ /tags/heart-of-palm/ [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^en\.ahaan-thai\.de$
+RewriteRule ^tags/spare-ribs/?$ /tags/spareribs/ [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^en\.ahaan-thai\.de$
+RewriteRule ^tags/steam-cooked/?$ /tags/steamed/ [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^en\.ahaan-thai\.de$
+RewriteRule ^tags/poultry/?$ /tags/chicken/ [R=301,L]
+
 # Collapse duplicate letter segments
 RewriteRule ^lexikon/([a-z])/\1/(.+)$ /lexikon/$1/$2 [R=301,L]
 RewriteRule ^encyclopedia/([a-z])/\1/(.+)$ /encyclopedia/$1/$2 [R=301,L]
