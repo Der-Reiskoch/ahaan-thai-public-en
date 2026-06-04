@@ -1,0 +1,37 @@
+# Ahaan Thai
+
+> Ahaan Thai (อาหารไทย) is the large, comprehensive encyclopedia for Thai food from
+> A to Z. This interactive reference work offers an alphabetical listing of well-known
+> and lesser-known Thai dishes, each with linked recipes, ingredients, regional origins,
+> and preparation details. The German version is available at https://www.ahaan-thai.de/
+
+## Encyclopedia (Thai Food A–Z)
+
+- [Encyclopedia – full overview](https://en.ahaan-thai.de/encyclopedia/a/): Entry point to the alphabetical Thai food encyclopedia
+- [Encyclopedia P](https://en.ahaan-thai.de/encyclopedia/p/): Pad, Phat and many more dishes
+- [Encyclopedia S](https://en.ahaan-thai.de/encyclopedia/s/)
+- [Encyclopedia T](https://en.ahaan-thai.de/encyclopedia/t/)
+- [Encyclopedia Y](https://en.ahaan-thai.de/encyclopedia/y/)
+
+## Regions
+
+- [Regions Overview](https://en.ahaan-thai.de/regions/): Dishes sorted by the four culinary regions of Thailand
+- [Northern Thailand](https://en.ahaan-thai.de/regions/northern-thailand/)
+- [Northeastern Thailand (Isaan)](https://en.ahaan-thai.de/regions/northeastern-thailand/)
+- [Central Thailand](https://en.ahaan-thai.de/regions/central-thailand/)
+- [Southern Thailand](https://en.ahaan-thai.de/regions/southern-thailand/)
+
+## Thai Food Dictionary
+
+- [Dictionary – Explain](https://en.ahaan-thai.de/thai-food-dictionary/explain/): Thai terms explained in English
+- [Dictionary – Compose](https://en.ahaan-thai.de/thai-food-dictionary/compose/): Explore Thai vocabulary interactively
+
+## Cookbooks
+
+- [Thai Cookbooks](https://en.ahaan-thai.de/cookbooks/): All referenced cookbooks with page references
+
+## Search & Navigation
+
+- [Search](https://en.ahaan-thai.de/search/)
+- [Tags](https://en.ahaan-thai.de/tags/)
+- [JSON API](https://en.ahaan-thai.de/api/): Machine-readable endpoints for encyclopedia and dictionary data
