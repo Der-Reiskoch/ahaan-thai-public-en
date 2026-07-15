@@ -36,6 +36,9 @@ RewriteRule ^de/(.*)$ /$1 [R=301,L]
 RewriteCond %{HTTP_HOST} ^www\.ahaan-thai\.de$
 RewriteRule ^regions/zentalthailand/?$ /regions/zentralthailand/ [R=301,L]
 
+RewriteCond %{HTTP_HOST} ^www\.ahaan-thai\.de$
+RewriteRule ^regions/sudthailand/?$ /regions/suedthailand/ [R=301,L]
+
 # Redirect old /en/index URLs to English subdomains' encyclopedia
 RewriteCond %{HTTP_HOST} ^www\.ahaan-thai\.de$
 RewriteRule ^en/index/(.*)$ https://en.ahaan-thai.de/encyclopedia/$1 [R=301,L]
