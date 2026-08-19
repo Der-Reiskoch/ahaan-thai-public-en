@@ -1,6 +1,7 @@
 User-agent: *
 
 Disallow: /api/
+Disallow: /thai-food-dictionary/
 Disallow: /api/thai-cook-book-library.json
 Disallow: /api/thai-food-dictionary.json
 Disallow: /api/thai-food-encyclopedia.json
