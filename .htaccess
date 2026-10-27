@@ -17,7 +17,7 @@ RewriteCond %{HTTP_HOST} ^www\.ahaan-thai\.de$
 RewriteRule ^encyclopedia/(.*)$ https://en.ahaan-thai.de/encyclopedia/$1 [R=301,L]
 
 RewriteCond %{HTTP_HOST} ^www\.ahaan-thai\.de$
-RewriteRule ^cookbooks/(.*)$ https://en.ahaan-thai.de/cookbooks/$1 [R=301,L]
+RewriteRule ^cookbooks/(.*)$ https://en.ahaan-thai.de/sources/cookbooks/$1 [R=301,L]
 
 # On German domain: redirect /index and /index/ to /lexikon/
 RewriteCond %{HTTP_HOST} ^www\.ahaan-thai\.de$
@@ -45,7 +45,20 @@ RewriteRule ^en/index/(.*)$ https://en.ahaan-thai.de/encyclopedia/$1 [R=301,L]
 
 # Redirect old Quellen URLs to cookbook index
 RewriteCond %{HTTP_HOST} ^www\.ahaan-thai\.de$
-RewriteRule ^quellen/thailand/.*$ /kochbucher/thailand-das-kochbuch/ [R=301,L]
+RewriteRule ^quellen/thailand/.*$ /quellen/kochbucher/thailand-das-kochbuch/ [R=301,L]
+
+# On German domain: cookbooks and source pages moved into the sources section (keeps the #page anchor, unlike the Hugo alias pages)
+RewriteCond %{HTTP_HOST} ^www\.ahaan-thai\.de$
+RewriteRule ^kochbucher/(.*)$ /quellen/kochbucher/$1 [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^www\.ahaan-thai\.de$
+RewriteRule ^quellen/?$ /quellen/kochbucher/ [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^www\.ahaan-thai\.de$
+RewriteRule ^quellen/lanna-food-verzeichnis-der-cmu/?$ /quellen/online/lanna-food-verzeichnis-der-cmu/ [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^www\.ahaan-thai\.de$
+RewriteRule ^quellen/digitaler-nachlass-von-andreas-ayasse/?$ /quellen/pdf/digitaler-nachlass-von-andreas-ayasse/ [R=301,L]
 
 # On English domain: redirect /index and /index/ to /encyclopedia/
 RewriteCond %{HTTP_HOST} ^en\.ahaan-thai\.de$
@@ -59,9 +72,18 @@ RewriteRule ^index/(.+)$ /encyclopedia/$1 [R=301,L]
 RewriteCond %{HTTP_HOST} ^en\.ahaan-thai\.de$
 RewriteRule ^lexikon/(.+)$ /encyclopedia/$1 [R=301,L]
 
-# On English domain: redirect /kochbucher/* to /cookbooks/*
+# On English domain: redirect /kochbucher/* and /cookbooks/* to /sources/cookbooks/*
 RewriteCond %{HTTP_HOST} ^en\.ahaan-thai\.de$
-RewriteRule ^kochbucher/(.*)$ /cookbooks/$1 [R=301,L]
+RewriteRule ^kochbucher/(.*)$ /sources/cookbooks/$1 [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^en\.ahaan-thai\.de$
+RewriteRule ^cookbooks/(.*)$ /sources/cookbooks/$1 [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^en\.ahaan-thai\.de$
+RewriteRule ^sources/?$ /sources/cookbooks/ [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^en\.ahaan-thai\.de$
+RewriteRule ^sources/lanna-food-directory-of-cmu/?$ /sources/online/lanna-food-directory-of-cmu/ [R=301,L]
 
 # On English domain: redirect /suchen/* to /search/*
 RewriteCond %{HTTP_HOST} ^en\.ahaan-thai\.de$
