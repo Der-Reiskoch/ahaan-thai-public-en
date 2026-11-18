@@ -5,6 +5,7 @@ Disallow: /api/$
 Disallow: /thai-food-dictionary/$
 Disallow: /api/thai-cook-book-library.json$
 Disallow: /api/thai-food-dictionary.json$
+Disallow: /encyclopedia/$
 Disallow: /api/thai-food-encyclopedia.json$
 Disallow: /tags/
 Disallow: /index.xml
