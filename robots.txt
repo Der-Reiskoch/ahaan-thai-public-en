@@ -10,5 +10,6 @@ Disallow: /api/thai-food-encyclopedia.json$
 Disallow: /tags/
 Disallow: /index.xml
 Disallow: /api/
+Disallow: /suchen/?
 
 Sitemap: https://en.der-reiskoch.de/sitemap.xml
